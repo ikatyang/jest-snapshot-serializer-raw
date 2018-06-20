@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`after 1`] = `
+paragraph "one"
+
+'paragraph' \\two\\
+`;
+
+exports[`before 1`] = `
+"paragraph \\"one\\"
+
+'paragraph' \\\\two\\\\"
+`;

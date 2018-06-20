@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "lib": ["es6"],
+    "module": "commonjs",
+    "declaration": true
+  },
+  "include": ["src/**/*.ts", "tests/**/*.ts"]
+}
