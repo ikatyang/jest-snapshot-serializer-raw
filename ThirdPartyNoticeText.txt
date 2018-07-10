@@ -1,3 +1,9 @@
+This project incorporates third party material from the projects listed below.
+The original copyright notice and the license under which we received such third
+party material are set forth below.
+
+================================================================================
+
 https://github.com/prettier/prettier/blob/9ec1da1/tests_config/raw-serializer.js
 
 Copyright 2017-2018 James Long
