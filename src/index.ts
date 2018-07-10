@@ -1,4 +1,4 @@
-const RAW = Symbol('jest-snapshot-serializer-raw');
+const RAW = Symbol.for('jest-snapshot-serializer-raw');
 
 export interface Wrapper {
   [RAW]: string;
