@@ -15,3 +15,5 @@ export function print(wrapper: Wrapper): string {
 export function wrap(value: string): Wrapper {
   return { [RAW]: value };
 }
+
+export default wrap;
