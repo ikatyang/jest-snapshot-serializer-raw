@@ -22,6 +22,8 @@ yarn add --dev jest-snapshot-serializer-raw
 
 ## Usage
 
+### Apply to specified snapshots
+
 ```json
 {
   "snapshotSerializers": ["jest-snapshot-serializer-raw"]
@@ -51,6 +53,34 @@ exports[`before 1`] = `
 
 'paragraph' \\\\two\\\\"
 `;
+
+exports[`after 1`] = `
+paragraph "one"
+
+'paragraph' \\two\\
+`;
+```
+
+### Apply to all snapshots
+
+```json
+{
+  "snapshotSerializers": ["jest-snapshot-serializer-raw/always"]
+}
+```
+
+```js
+// test.js
+
+const example = `paragraph "one"\n\n'paragraph' \\two\\`;
+
+test('after', () => {
+  expect(example).toMatchSnapshot();
+});
+```
+
+```js
+// test.js.snap
 
 exports[`after 1`] = `
 paragraph "one"
