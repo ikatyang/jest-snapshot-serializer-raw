@@ -1,6 +1,6 @@
 {
   "name": "jest-snapshot-serializer-raw",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "jest snapshot serializer for reducing escapes in the snapshot file",
   "keywords": [
     "jest",
