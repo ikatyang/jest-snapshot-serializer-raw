@@ -3,5 +3,5 @@ export function test(value: any): value is string {
 }
 
 export function print(value: string): string {
-  return value;
+  return value.trim();
 }
