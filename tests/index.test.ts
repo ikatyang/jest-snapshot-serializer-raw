@@ -1,14 +1,14 @@
-import serializer = require('../src/index');
+import { expect, test } from 'vitest'
+import serializer, { wrap } from '../src/index.js'
 
-expect.addSnapshotSerializer(serializer);
+expect.addSnapshotSerializer(serializer)
 
-const { wrap } = serializer;
-const example = `paragraph "one"\n\n'paragraph' \\two\\`;
+const example = `paragraph "one"\n\n'paragraph' \\two\\`
 
 test('before', () => {
-  expect(example).toMatchSnapshot();
-});
+  expect(example).toMatchSnapshot()
+})
 
 test('after', () => {
-  expect(wrap(example)).toMatchSnapshot();
-});
+  expect(wrap(example)).toMatchSnapshot()
+})
