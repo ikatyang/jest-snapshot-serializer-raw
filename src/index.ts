@@ -1,21 +1,22 @@
-import * as always from './always';
+import always from './always.js'
 
-const RAW = Symbol.for('jest-snapshot-serializer-raw');
+const RAW = Symbol.for('jest-snapshot-serializer-raw')
 
 export interface Wrapper {
-  [RAW]: string;
+  [RAW]: string
 }
 
 export function wrap(value: string): Wrapper {
-  return { [RAW]: value };
+  return { [RAW]: value }
 }
 
-export function test(value: any): value is Wrapper {
-  return value && always.test(value[RAW]);
+function test(value: any): boolean {
+  return value && always.test(value[RAW])
 }
 
-export function print(value: Wrapper): string {
-  return always.print(value[RAW]);
+function print(value: unknown): string {
+  const wrapper = value as Wrapper
+  return always.print(wrapper[RAW])
 }
 
-export default wrap;
+export default { test, print }

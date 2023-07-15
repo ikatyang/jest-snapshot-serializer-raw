@@ -1,7 +1,9 @@
-export function test(value: any): value is string {
-  return typeof value === 'string';
+function test(value: any): boolean {
+  return typeof value === 'string'
 }
 
-export function print(value: string): string {
-  return value;
+function print(value: unknown): string {
+  return value as string
 }
+
+export default { test, print }

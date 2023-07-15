@@ -1,8 +1,7 @@
 # jest-snapshot-serializer-raw
 
 [![npm](https://img.shields.io/npm/v/jest-snapshot-serializer-raw.svg)](https://www.npmjs.com/package/jest-snapshot-serializer-raw)
-[![build](https://img.shields.io/travis/ikatyang/jest-snapshot-serializer-raw/master.svg)](https://travis-ci.org/ikatyang/jest-snapshot-serializer-raw/builds)
-[![coverage](https://img.shields.io/codecov/c/github/ikatyang/jest-snapshot-serializer-raw/master.svg)](https://codecov.io/gh/ikatyang/jest-snapshot-serializer-raw)
+[![build](https://img.shields.io/github/actions/workflow/status/ikatyang/jest-snapshot-serializer-raw/test.yml)](https://github.com/ikatyang/jest-snapshot-serializer-raw/actions?query=branch%3Amaster)
 
 jest snapshot serializer for reducing escapes in the snapshot file
 
@@ -13,93 +12,93 @@ jest snapshot serializer for reducing escapes in the snapshot file
 ## Install
 
 ```sh
-# using npm
-npm install --save-dev jest-snapshot-serializer-raw
-
-# using yarn
-yarn add --dev jest-snapshot-serializer-raw
+npm install jest-snapshot-serializer-raw
 ```
+
+Note: This package is now pure ESM, you may want to install `jest-snapshot-serializer-raw@1` if you'd like to use it in CJS environment
 
 ## Usage
 
 ### Apply to specified snapshots
 
-```json
-{
-  "snapshotSerializers": ["jest-snapshot-serializer-raw"]
-}
-```
+In setup file or test file:
 
 ```js
-// test.js
+import serializerRaw from 'jest-snapshot-serializer-raw'
+expect.addSnapshotSerializer(serializerRaw)
+```
 
-const { wrap } = require('jest-snapshot-serializer-raw');
-const example = `paragraph "one"\n\n'paragraph' \\two\\`;
+In test file:
+
+```js
+import { wrap } from 'jest-snapshot-serializer-raw'
+const example = `paragraph "one"\n\n'paragraph' \\two\\`
 
 test('before', () => {
-  expect(example).toMatchSnapshot();
-});
+  expect(example).toMatchSnapshot()
+})
 
 test('after', () => {
-  expect(wrap(example)).toMatchSnapshot();
-});
+  expect(wrap(example)).toMatchSnapshot()
+})
 ```
 
-```js
-// test.js.snap
+In snapshot file:
 
+```js
 exports[`before 1`] = `
 "paragraph \\"one\\"
 
 'paragraph' \\\\two\\\\"
-`;
+`
 
 exports[`after 1`] = `
 paragraph "one"
 
 'paragraph' \\two\\
-`;
+`
 ```
 
 ### Apply to all snapshots
 
-```json
-{
-  "snapshotSerializers": ["jest-snapshot-serializer-raw/always"]
-}
-```
+In setup file or test file:
 
 ```js
-// test.js
+import serializerRaw from 'jest-snapshot-serializer-raw/always'
+expect.addSnapshotSerializer(serializerRaw)
+```
 
-const example = `paragraph "one"\n\n'paragraph' \\two\\`;
+In test file:
+
+```js
+const example = `paragraph "one"\n\n'paragraph' \\two\\`
 
 test('after', () => {
-  expect(example).toMatchSnapshot();
-});
+  expect(example).toMatchSnapshot()
+})
 ```
 
-```js
-// test.js.snap
+In snapshot file:
 
+```js
 exports[`after 1`] = `
 paragraph "one"
 
 'paragraph' \\two\\
-`;
+`
 ```
 
 ## Development
 
 ```sh
 # lint
-yarn run lint
+pnpm run lint
 
 # build
-yarn run build
+pnpm run build
 
 # test
-yarn run test
+pnpm run test
 ```
 
 ## License
