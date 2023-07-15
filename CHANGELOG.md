@@ -1,6 +1,16 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+# [2.0.0](https://github.com/ikatyang/jest-snapshot-serializer-raw/compare/v1.2.0...v2.0.0) (2023-07-15)
+
+### Build System
+
+- update infra ([#82](https://github.com/ikatyang/jest-snapshot-serializer-raw/issues/82)) ([4d233c3](https://github.com/ikatyang/jest-snapshot-serializer-raw/commit/4d233c31d9c5a1f529533b9ef38951909648351a))
+
+### BREAKING CHANGES
+
+- this package is now pure ESM
 
 <a name="1.2.0"></a>
 
